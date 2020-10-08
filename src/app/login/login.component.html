@@ -13,7 +13,7 @@
 
         <div class = "form-group">
             <label>Password</label>
-           <input required type = "password" pattern = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*\Q/-_=\E#?&])[A-Za-z\d$@$!%*\Q-_/=\E#?&]{8,}$" [class.is-invalid] = "password.invalid && password.touched"
+           <input required type = "password" pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*([^a-zA-Z\d\s])).{9,}$" [class.is-invalid] = "password.invalid && password.touched"
             name = "password" #password = "ngModel" class = "form-control" ngModel>
             <div *ngIf = "password.errors && password.invalid && password.touched">
                 <small class = "text-danger" *ngIf = "password.errors.pattern">Password must contain at least 8 characters, one special character and a number</small>
