@@ -9,18 +9,25 @@ import { ScrumdataService } from '../scrumdata.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private _scrumdataService : ScrumdataService) { }
+  constructor(private _scrumdataService: ScrumdataService) { }
 
   ngOnInit(): void {
   }
   userTypes = ['regular user', 'project owner'];
-  scrumUserModel = new Scrumuser('','','','');
+  scrumUserModel = new Scrumuser('', '', '', '');
+  feedbk = '';
 
-  onSubmit(){
-    console.log(this.scrumUserModel);
+  onSubmit() {
+    console.log(this.scrumUserModel)
     this._scrumdataService.signup(this.scrumUserModel).subscribe(
-      data => console.log('your account was created sucessully', data),
-      error => console.error('Error!', error),
+      data => {
+        console.log('Success!', data),
+        this.feedbk = 'Account created succesfully'
+      },
+      error => {
+        console.error('Error!', error)
+        this.feedbk = 'Signup Failed'
+      }
     )
   }
 }
