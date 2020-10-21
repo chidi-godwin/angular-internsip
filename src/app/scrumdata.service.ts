@@ -12,6 +12,7 @@ export class ScrumdataService {
 
   _url = 'https://liveapi.chatscrum.com/scrum/api/scrumusers/'
   _loginUrl = 'https://liveapi.chatscrum.com/scrum/api-token-auth/';
+  _scrumProjectUrl = 'https://liveapi.chatscrum.com/scrum/api/scrumprojects/project_id';
 
   public httpOptions = {
     headers : new HttpHeaders({'Content-Type' : 'application/json'})
@@ -28,5 +29,9 @@ export class ScrumdataService {
 
   loggedIn() {
     return !!localStorage.getItem('token')
+  }
+
+  allProjectGoals(project_id){
+    return this._http.get<any>(this._scrumProjectUrl + project_id, this.httpOptions);
   }
 }
